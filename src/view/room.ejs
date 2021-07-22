@@ -25,20 +25,21 @@
           <img src="/images/logo.svg" alt="Logo do aplicativo" />
         </a>
         <div class="buttons">
-          <div class="button outlined" id="roomId" data-id="323232">
-            #323232
+          <div class="button outlined" id="roomId" data-id="<%= roomId %>">
+            #<%= roomId %>
             <img src="/images/copy.svg" alt="Copiar código da sala" />
           </div>
-          <a href="#" class="button">
+          <a href="/create-pass" class="button">
             <img src="/images/users-white.svg" alt="Criar uma sala" />
             Criar sala
           </a>
         </div>
       </header>
+
       <main>
         <section id="questionForm">
           <h2>Faça sua pergunta</h2>
-          <form action="">
+          <form action="/question/create/<%= roomId %>" method="POST">
             <label class="srOnly" for-id="question"
               >O que você quer perguntar?
             </label>
@@ -58,109 +59,58 @@
         </section>
 
         <section id="questions">
-          <h2 class="sr-only">Perguntas da comunidade</h2>
+          <h2 class="srOnly">Perguntas da comunidade</h2>
           <div class="questions">
+            <% if(isNoQuestions){%>
+            <!---->
+            <%- include('parts/no-question') %>
+            <!---->
+            <% } %>
+            <!---->
+            <% questions.forEach(question => { %>
             <div class="questionWrapper">
               <div class="questionContent">
                 <div class="user">
                   <img src="/images/user.svg" alt="Foto de usuário" />
                 </div>
                 <div class="question">
-                  <p>Qual a diferença entre const, var e let no Javascript?</p>
+                  <p><%= question.title %></p>
                 </div>
               </div>
               <div class="actions">
-                <a href="#" class="check" data-id="2">
+                <a href="#" class="check" data-id="<%= question.id %>">
                   <img
                     src="/images/check.svg"
                     alt="Marcar pergunta como lida"
                   />
                   Marcar como lida
                 </a>
-                <a href="#" class="delete" data-id="2">
+                <a href="#" class="delete" data-id="<%= question.id %>">
                   <img src="/images/trash.svg" alt="Excluir pergunta" />
                   Excluir
                 </a>
               </div>
             </div>
-
-            <div class="questionWrapper">
-              <div class="questionContent">
-                <div class="user">
-                  <img src="/images/user.svg" alt="Foto de usuário" />
-                </div>
-                <div class="question">
-                  <p>O que é Typescript?</p>
-                </div>
-              </div>
-              <div class="actions">
-                <a href="#" class="check" data-id="3">
-                  <img
-                    src="/images/check.svg"
-                    alt="Marcar pergunta como lida"
-                  />
-                  Marcar como lida
-                </a>
-                <a href="#" class="delete" data-id="3">
-                  <img src="/images/trash.svg" alt="Excluir pergunta" />
-                  Excluir
-                </a>
-              </div>
-            </div>
-
-            <div class="questionWrapper">
-              <div class="questionContent">
-                <div class="user">
-                  <img src="/images/user.svg" alt="Foto de usuário" />
-                </div>
-                <div class="question">
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id,
-                    sed aliquid atque perspiciatis fugit natus, dolor commodi
-                    nihil dolores laudantium maxime? Necessitatibus voluptatum
-                    dolores veniam doloribus. Voluptates cum debitis at Lorem
-                    ipsum dolor sit amet consectetur adipisicing elit. Id, sed
-                    aliquid atque perspiciatis fugit natus, dolor commodi nihil
-                    dolores laudantium maxime? Necessitatibus voluptatum dolores
-                    veniam doloribus. Voluptates cum debitis at.
-                  </p>
-                </div>
-              </div>
-              <div class="actions">
-                <a href="#" class="check" data-id="4">
-                  <img
-                    src="/images/check.svg"
-                    alt="Marcar pergunta como lida"
-                  />
-                  Marcar como lida
-                </a>
-                <a href="#" class="delete" data-id="4">
-                  <img src="/images/trash.svg" alt="Excluir pergunta" />
-                  Excluir
-                </a>
-              </div>
-            </div>
-
+            <% }); %>
+            <!---->
+            <% questionsRead.forEach(questionRead => { %>
             <div class="questionWrapper read">
               <div class="questionContent">
                 <div class="user">
                   <img src="/images/user.svg" alt="Foto de usuário" />
                 </div>
                 <div class="question">
-                  <p>O que é Javascript?</p>
+                  <p><%= questionRead.title %></p>
                 </div>
               </div>
               <div class="actions">
-                <!--<a href="#" class="check">
-                  <img src="/images/check.svg" alt="Marcar pergunta como lida" />
-                  Marcar como lida
-                </a>-->
-                <a href="#" class="delete" data-id="1">
+                <a href="#" class="delete" data-id="<%= questionRead.id %>">
                   <img src="/images/trash.svg" alt="Excluir pergunta" />
                   Excluir
                 </a>
               </div>
             </div>
+            <% }); %>
           </div>
         </section>
       </main>
