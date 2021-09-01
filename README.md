@@ -17,13 +17,13 @@ Projeto desenvolvido durante a Next Level Week da Rocketseat, onde era denominad
 
 ## 💻 Objetivo
 
-A produção deste website tem como principal objetivo a fixação dos conhecimentos nas tecnologias, através da prática.
+A produção deste website tem como principal objetivo a fixação dos conhecimentos nas tecnologias aplicadas, através da prática.
 
 ## 📚 Features
 
 ### ◼️ SQLite3
 
-A SQLite3 é uma biblioteca em linguagem C que permite a implementação de um banco de dados embutido. Para incluí-la no projeto para executar os seguintes comandos no terminal na pasta do projeto: 
+A SQLite3 é uma biblioteca em linguagem C que permite a implementação de um banco de dados embutido. Para incluí-la no projeto é preciso executar os seguintes comandos no terminal na pasta do projeto: 
 ```
 npm install SQLite
 ```
@@ -71,7 +71,6 @@ EJS é um linguagem de modelagem permitindo gerar as marcações HTML, juntament
 
 Por exemplo, a imagem a seguir mostra o index.ejs que contém como HTML apenas as imagens e na div container é adicionado o conteúdo do arquivo enter-room.ejs (contido na pasta parts):
 <br><br>
-
 ![image](https://user-images.githubusercontent.com/48057126/131734018-6d39a0b8-3580-49bf-954e-c36fa9971155.png)
 <br><br>
 Já na seguinte figura, o index.ejs recebe o conteúdo do arquivo create-pass.ejs (contido também na pasta parts):
